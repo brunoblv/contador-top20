@@ -26,7 +26,7 @@ export async function POST(request) {
 
         const posicaoAtual = parseInt(dadosIniciais[1], 10);
         const artista = dadosIniciais.slice(2).join(' ');
-        const pontos = 101 - posicaoAtual;
+        const pontos = 21 - posicaoAtual;
         const chave = `${artista.trim()} - ${musica.trim()}`;
 
         if (pontuacaoMusicas.has(chave)) {
