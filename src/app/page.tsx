@@ -11,10 +11,15 @@ import {
   ListItem,
   ListItemText,
   Paper,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
 } from "@mui/material";
 
 export default function Home() {
   const [texto, setTexto] = useState("");
+  const [opcao, setOpcao] = useState("9095"); // Estado para armazenar a opção selecionada
   const [resultado, setResultado] = useState<[string, number][] | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -23,7 +28,7 @@ export default function Home() {
     const response = await fetch("/api/processar-musicas", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ texto }),
+      body: JSON.stringify({ texto, opcao }), // Envia a opção selecionada
     });
 
     const data = await response.json();
@@ -42,6 +47,19 @@ export default function Home() {
         </Typography>
 
         <Box component="form" onSubmit={handleSubmit} sx={{ mb: 4 }}>
+          <FormControl fullWidth sx={{ mb: 2 }}>
+            <InputLabel id="opcao-label">Selecione a opção</InputLabel>
+            <Select
+              labelId="opcao-label"
+              value={opcao}
+              label="Selecione a opção"
+              onChange={(e) => setOpcao(e.target.value)}
+            >
+              <MenuItem value="9095">9095</MenuItem>
+              <MenuItem value="Bang">Bang</MenuItem>
+            </Select>
+          </FormControl>
+
           <TextField
             fullWidth
             multiline
