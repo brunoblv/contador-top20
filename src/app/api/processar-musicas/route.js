@@ -52,7 +52,7 @@ export async function POST(request) {
 
     const top30 = Array.from(pontuacaoMusicas.entries())
         .sort((a, b) => b[1] - a[1])
-        .slice(0, 200);
+        .slice(0, 500);
 
     return new Response(JSON.stringify({ musicas: top30 }), {
         status: 200,

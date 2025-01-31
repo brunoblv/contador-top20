@@ -84,7 +84,7 @@ export default function Home() {
         {resultado && (
           <Paper elevation={2} sx={{ p: 2, borderRadius: 2 }}>
             <Typography variant="h6" component="h2" gutterBottom>
-              Top 30 Músicas Mais Pontuadas
+              Pontuação das Músicas
             </Typography>
             <List>
               {resultado.map(([musica, pontos], index) => (
